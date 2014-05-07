@@ -5,11 +5,11 @@ Put a little spinner on process.stderr, as unobtrusively as possible.
 ## USAGE
 
 ```javascript
-var spinner = require("spinner")
+var spinner = require("char-spinner");
 
 // All options are optional
 // even the options argument itself is optional
-spinner(options)
+spinner(options);
 ```
 
 ## OPTIONS
