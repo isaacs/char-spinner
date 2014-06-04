@@ -1,6 +1,6 @@
 {
   "name": "char-spinner",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Put a little spinner on process.stderr, as unobtrusively as possible.",
   "main": "spin.js",
   "directories": {
