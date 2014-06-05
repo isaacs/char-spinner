@@ -19,7 +19,7 @@ function spinner(opt) {
     if (--delay >= 0) return
     s = ++s % sprite.length
     var c = sprite[s]
-    str.write('\r \r' + c + '\r')
+    str.write(c + '\b')
     wrote = true
   }, ms)
 
@@ -32,7 +32,7 @@ function spinner(opt) {
   if (cleanup) {
     process.on('exit', function() {
       if (wrote) {
-        str.write('\r \r')
+        str.write('\b')
       }
     })
   }

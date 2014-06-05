@@ -14,7 +14,7 @@ test('does nothing when not a tty', function(t) {
 test('write spinny stuff', function(t) {
   var output = ''
   var written = 0
-  var expect = "\r \rb\r\r \rc\r\r \rd\r\r \re\r\r \rf\r\r \rg\r\r \rh\r\r \ri\r\r \rj\r\r \rk\r\r \rl\r\r \rm\r\r \rn\r\r \ro\r\r \rp\r\r \ra\r\r \rb\r\r \rc\r\r \rd\r\r \re\r\r \rf\r\r \rg\r\r \rh\r\r \ri\r\r \rj\r\r \rk\r\r \rl\r\r \rm\r\r \rn\r\r \ro\r\r \rp\r\r \ra\r\r \rb\r\r \rc\r\r \rd\r\r \re\r\r \rf\r\r \rg\r\r \rh\r\r \ri\r\r \rj\r\r \rk\r\r \rl\r\r \rm\r\r \rn\r\r \ro\r\r \rp\r\r \ra\r\r \rb\r\r \rc\r"
+  var expect = "b\bc\bd\be\bf\bg\bh\bi\bj\bk\bl\bm\bn\bo\bp\ba\bb\bc\bd\be\bf\bg\bh\bi\bj\bk\bl\bm\bn\bo\bp\ba\bb\bc\bd\be\bf\bg\bh\bi\bj\bk\bl\bm\bn\bo\bp\ba\bb\bc\b"
 
   var int = spinner({
     interval: 0,
