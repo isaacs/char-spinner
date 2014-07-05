@@ -42,10 +42,8 @@ function spinner(opt) {
   module.exports.clear = function () {
     str.write(CLEAR);
   };
-  
+
   return interval
 }
 
 module.exports.clear = function () {};
-
-
