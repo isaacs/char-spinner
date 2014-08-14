@@ -10,6 +10,7 @@ function spinner(opt) {
   if (tty && !str.isTTY) return false
   var CR = str.isTTY ? '\u001b[0G' : '\u000d';
   var CLEAR = str.isTTY ? '\u001b[2K' : '\u000d \u000d';
+  var msg = opt.msg || '';
 
   var s = 0
   var sprite = string.split('')
@@ -21,7 +22,7 @@ function spinner(opt) {
     if (--delay >= 0) return
     s = ++s % sprite.length
     var c = sprite[s]
-    str.write(c + CR)
+    str.write(msg + c + CR)
     wrote = true
   }, ms)
 

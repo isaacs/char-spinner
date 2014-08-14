@@ -33,3 +33,25 @@ test('write spinny stuff', function(t) {
     cleanup: false
   })
 })
+
+test('test message', function(t) {
+  var written = 0;
+  var expect = '\u0077\u0061\u0069\u0074\u0069\u006e\u0067\u002e\u002e\u002e\u0062\u001b[0G';
+
+  var int = spinner({
+      interval: 0,
+      string: 'abcdef',
+      msg: 'waiting...',
+      stream: {
+        write: function(c) {
+            if (++written == 1) {
+              t.equal(c, expect);
+              clearInterval(int);
+              t.end();
+            }
+        },
+        isTTY: true
+      },
+      cleanup: false
+    });
+})
