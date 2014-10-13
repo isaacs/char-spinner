@@ -9,7 +9,14 @@ var spinner = require("char-spinner")
 
 // All options are optional
 // even the options argument itself is optional
-spinner(options)
+var interval = spinner(options)
+
+// the return value is the interval.
+// to stop the spinner, you can just clearInterval on it
+clearInterval(interval)
+
+// then to restart it again, just call the function again
+interval = spinner(options)
 ```
 
 ## OPTIONS
