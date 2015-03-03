@@ -31,11 +31,11 @@ function spinner(opt) {
   }
 
   var cleanup = typeof opt.cleanup === 'boolean' ? opt.cleanup : true
-  if (cleanup && process.listeners('exit').map(function (fn) { return fn.name }).indexOf('exit') === -1) {
-    process.on('exit', exit)
+  if (cleanup && !process.listeners('exit').some(function (fn) { return fn.name === 'charSpinnerExit' })) {
+    process.on('exit', charSpinnerExit)
   }
 
-  function exit () {
+  function charSpinnerExit () {
     if (wrote) {
       str.write(CLEAR);
     }
