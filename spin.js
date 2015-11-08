@@ -31,12 +31,14 @@ function spinner(opt) {
   }
 
   var cleanup = typeof opt.cleanup === 'boolean' ? opt.cleanup : true
-  if (cleanup) {
-    process.on('exit', function() {
-      if (wrote) {
-          str.write(CLEAR);
-      }
-    })
+  if (cleanup && !process.listeners('exit').some(function (fn) { return fn.name === 'charSpinnerExit' })) {
+    process.on('exit', charSpinnerExit)
+  }
+
+  function charSpinnerExit () {
+    if (wrote) {
+      str.write(CLEAR);
+    }
   }
 
   module.exports.clear = function () {
