@@ -34,14 +34,36 @@ test('write spinny stuff', function(t) {
   })
 })
 
-test('test message', function(t) {
+test('test prefix', function(t) {
   var written = 0;
   var expect = '\u0077\u0061\u0069\u0074\u0069\u006e\u0067\u002e\u002e\u002e\u0062\u001b[0G';
 
   var int = spinner({
       interval: 0,
       string: 'abcdef',
-      msg: 'waiting...',
+      prefix: 'waiting...',
+      stream: {
+        write: function(c) {
+            if (++written == 1) {
+              t.equal(c, expect);
+              clearInterval(int);
+              t.end();
+            }
+        },
+        isTTY: true
+      },
+      cleanup: false
+    });
+})
+
+test('test suffix', function(t) {
+  var written = 0;
+  var expect = '\u0062\u003d\u003e\u001b[0G';
+
+  var int = spinner({
+      interval: 0,
+      string: 'abcdef',
+      suffix: '=>',
       stream: {
         write: function(c) {
             if (++written == 1) {

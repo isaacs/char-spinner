@@ -27,6 +27,7 @@ configurable for testing purposes.
 * `delay` Number of frames to "skip over" before printing the spinner.
   Useful if you want to avoid showing the spinner for very fast
   actions.  Default=`2`
-* `msg` msg to be prepended to `string`. For example: `waiting...[/-\|]`
+* `prefix` msg to be prepended to `string`. For example: `waiting...[/-\|]`
+* `suffix` msg to be appended to `string`. For example: `[/-\|]=>`
 
 Returns the generated interval, if one was created.
