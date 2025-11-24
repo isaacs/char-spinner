@@ -1,7 +1,7 @@
-var test = require('tap').test
+var t = require('tap')
 var spinner = require('../spin.js')
 
-test('does nothing when not a tty', function(t) {
+t.test('does nothing when not a tty', function(t) {
   var int = spinner({
     stream: { write: function(c) {
       throw new Error('wrote something: ' + JSON.stringify(c))
@@ -11,7 +11,7 @@ test('does nothing when not a tty', function(t) {
   t.end()
 })
 
-test('write spinny stuff', function(t) {
+t.test('write spinny stuff', function(t) {
   var output = ''
   var written = 0
   var expect = "b\u001b[0Gc\u001b[0Gd\u001b[0Ge\u001b[0Gf\u001b[0Gg\u001b[0Gh\u001b[0Gi\u001b[0Gj\u001b[0Gk\u001b[0Gl\u001b[0Gm\u001b[0Gn\u001b[0Go\u001b[0Gp\u001b[0Ga\u001b[0Gb\u001b[0Gc\u001b[0Gd\u001b[0Ge\u001b[0Gf\u001b[0Gg\u001b[0Gh\u001b[0Gi\u001b[0Gj\u001b[0Gk\u001b[0Gl\u001b[0Gm\u001b[0Gn\u001b[0Go\u001b[0Gp\u001b[0Ga\u001b[0Gb\u001b[0Gc\u001b[0Gd\u001b[0Ge\u001b[0Gf\u001b[0Gg\u001b[0Gh\u001b[0Gi\u001b[0Gj\u001b[0Gk\u001b[0Gl\u001b[0Gm\u001b[0Gn\u001b[0Go\u001b[0Gp\u001b[0Ga\u001b[0Gb\u001b[0Gc\u001b[0G"
