@@ -2,12 +2,27 @@
   "name": "char-spinner",
   "version": "1.0.1",
   "description": "Put a little spinner on process.stderr, as unobtrusively as possible.",
-  "main": "spin.js",
+  "main": "./dist/commonjs/index.js",
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
-    "tap": "^1.2.0"
+    "prettier": "^3.7.4",
+    "tap": "^21.5.0",
+    "tshy": "^3.1.0",
+    "typedoc": "^0.28.15"
   },
   "scripts": {
-    "test": "tap test/*.js"
+    "preversion": "npm test",
+    "postversion": "npm publish",
+    "prepublishOnly": "git push origin --follow-tags",
+    "prepare": "tshy",
+    "pretest": "npm run prepare",
+    "presnap": "npm run prepare",
+    "test": "tap",
+    "snap": "tap",
+    "format": "prettier --write . --log-level warn",
+    "typedoc": "typedoc"
   },
   "repository": {
     "type": "git",
@@ -18,9 +33,31 @@
     "spinner"
   ],
   "author": "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me/)",
-  "license": "ISC",
+  "license": "BlueOak-1.0.0",
   "bugs": {
     "url": "https://github.com/isaacs/char-spinner/issues"
   },
-  "homepage": "https://github.com/isaacs/char-spinner"
+  "homepage": "https://github.com/isaacs/char-spinner",
+  "type": "module",
+  "tshy": {
+    "exports": {
+      "./package.json": "./package.json",
+      ".": "./src/index.ts"
+    }
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/index.d.ts",
+        "default": "./dist/commonjs/index.js"
+      }
+    }
+  },
+  "types": "./dist/commonjs/index.d.ts",
+  "module": "./dist/esm/index.js"
 }

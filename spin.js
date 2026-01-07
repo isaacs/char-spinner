@@ -8,8 +8,8 @@ function spinner(opt) {
   var ms = typeof opt.interval === 'number' ? opt.interval : 50
   if (ms < 0) ms = 0
   if (tty && !str.isTTY) return false
-  var CR = str.isTTY ? '\u001b[0G' : '\u000d';
-  var CLEAR = str.isTTY ? '\u001b[2K' : '\u000d \u000d';
+  var CR = str.isTTY ? '\u001b[0G' : '\u000d'
+  var CLEAR = str.isTTY ? '\u001b[2K' : '\u000d \u000d'
 
   var s = 0
   var sprite = string.split('')
@@ -17,7 +17,7 @@ function spinner(opt) {
 
   var delay = typeof opt.delay === 'number' ? opt.delay : 2
 
-  var interval = setInterval(function() {
+  var interval = setInterval(function () {
     if (--delay >= 0) return
     s = ++s % sprite.length
     var c = sprite[s]
@@ -32,18 +32,18 @@ function spinner(opt) {
 
   var cleanup = typeof opt.cleanup === 'boolean' ? opt.cleanup : true
   if (cleanup) {
-    process.on('exit', function() {
+    process.on('exit', function () {
       if (wrote) {
-          str.write(CLEAR);
+        str.write(CLEAR)
       }
     })
   }
 
   module.exports.clear = function () {
-    str.write(CLEAR);
-  };
+    str.write(CLEAR)
+  }
 
   return interval
 }
 
-module.exports.clear = function () {};
+module.exports.clear = function () {}
