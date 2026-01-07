@@ -35,4 +35,5 @@ configurable for testing purposes.
   you want it to automatically stop spinning when the promise
   resolves.
 
-Returns the generated interval, if one was created.
+Returns a `clear` function if a spinner was created, otherwise
+`undefined`.
