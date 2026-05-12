@@ -21,7 +21,7 @@ export type Options = {
   cleanup?: boolean
 
   /** automatically terminate spinner when promise resolves */
-  promise?: Promise<unknown> | ((...a: any[]) => Promise<unknown>)
+  promise?: Promise<unknown> | ((...a: unknown[]) => Promise<unknown>)
 }
 
 export const spinner = (opt: Options = {}): (() => void) | void => {

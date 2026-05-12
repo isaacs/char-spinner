@@ -80,7 +80,7 @@ t.test('write spinny stuff', t => {
 
 t.test('spin on a function', async t => {
   let res
-  const p = new Promise(resolve => res = resolve)
+  const p = new Promise(resolve => (res = resolve))
   const asunc = async () => {
     res(10)
   }
